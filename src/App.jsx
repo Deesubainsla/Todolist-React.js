@@ -3,6 +3,7 @@ import { TodoForm,TodoItem } from './Components'
 import { TodoProvider,Todoinfo,container } from './Context'
 
 
+
 function App() {
     const [Todos,setTodos] = useState([]);
 
@@ -13,6 +14,13 @@ function App() {
 
     const updateTodo =(id, todo)=>{
       setTodos((prev)=> prev.map((unchngtodo)=> (unchngtodo.id === id)? todo: unchngtodo))
+      // setTodos((prev)=> prev.map((unchngprev)=>{
+      //   if(unchngprev.id === id)  return todo;
+            
+        
+      //    return unchngprev
+        
+      //   }))
     }
 
     const deleteTodo = (id)=>{

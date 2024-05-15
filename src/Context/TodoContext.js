@@ -1,7 +1,8 @@
 import { useContext,createContext } from "react";
 
 
-export const container = createContext({
+ export const container = createContext({
+    
         Todos:[
             {
                 id:1,
@@ -13,6 +14,7 @@ export const container = createContext({
         updateTodo:(id,todo)=>{},
         deleteTodo:(id)=>{},
         toggleComplete:(id)=>{},
+        
 
 });
 

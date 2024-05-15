@@ -10,7 +10,7 @@ function TodoForm() {
         e.preventDefault()
         // console.log("todo")
         if(!todo) return 
-        console.log(todo)
+        // console.log(todo)
 
         addTodo({id:Date.now(),todo, completed:false});
         settodo("");
