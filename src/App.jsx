@@ -61,20 +61,47 @@ function App() {
 
 
   return (
+    // <TodoProvider value={{ Todos, updateTodo, addTodo, toggleComplete, deleteTodo }}>
+    //   <Toaster
+    //     position="bottom-center"
+    //     reverseOrder={false}
+    //   />
+    //   <div className="bg-[#172842] min-h-screen py-8">
+    //     <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg       px-4  py-3 text-white">
+    //       <h1 onClick={() => console.log("working:")} className="text-[30px] md:text-4xl font-bold text-center mb-8 mt-2">Achievement Dashboard</h1>
+    //       <div className="mb-4">
+    //         {/* Todo form goes here */}
+    //         <TodoForm />
+    //       </div>
+    //       <div className="flex flex-wrap gap-y-3">
+    //         {/*Loop and Add TodoItem here */}
+    //         {Todos.map((todo) => (
+    //           <div key={todo.id} className='w-full'>
+    //             <TodoItem todo={todo} />
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </TodoProvider>
+
+
     <TodoProvider value={{ Todos, updateTodo, addTodo, toggleComplete, deleteTodo }}>
-      <Toaster
-        position="bottom-center"
-        reverseOrder={false}
-      />
-      <div className="bg-[#172842] min-h-screen py-8">
-        <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg       px-4  py-3 text-white">
-          <h1 onClick={() => console.log("working:")} className="text-[30px] md:text-4xl font-bold text-center mb-8 mt-2">Achievement Dashboard</h1>
-          <div className="mb-4">
+      <Toaster position="bottom-center" reverseOrder={false} toastOptions={{
+        style:{
+          background: '#111827',
+          color: '#fff',
+        }
+      }} />
+      <div className="bg-slate-300  min-h-screen py-8 px-4">
+        <div className="w-full max-w-3xl mx-auto shadow-2xl rounded-xl bg-gray-900 p-6 text-white">
+          <h1 className="text-4xl font-extrabold text-center  mb-8 ">Achievement Dashboard</h1>
+          <div className="mb-6">
             {/* Todo form goes here */}
             <TodoForm />
           </div>
-          <div className="flex flex-wrap gap-y-3">
-            {/*Loop and Add TodoItem here */}
+          <div className="space-y-4">
+            {/* Loop and Add TodoItem here */}
             {Todos.map((todo) => (
               <div key={todo.id} className='w-full'>
                 <TodoItem todo={todo} />
