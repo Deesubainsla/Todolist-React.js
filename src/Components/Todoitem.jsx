@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Todoinfo } from '../Context';
+import toast from 'react-hot-toast';
 
 function TodoItem({ todo }) {
     const {updateTodo,deleteTodo,toggleComplete } = Todoinfo();
@@ -9,10 +10,16 @@ function TodoItem({ todo }) {
     const editTodo = ()=>{
         updateTodo(todo.id, {...todo,todo:Todomsg});
         setIstodoEditable(false);
+        toast.success("updated successfully");
+        // console.log("here");
     }
-    const toggleCompleted = ()=>{
+    const toggleCompleted = (e)=>{
         toggleComplete(todo.id);
-        console.log(todo.completed);
+        if(document.querySelector("#checkbox").checked){
+            toast.success("Task completed");
+        }
+        
+        // console.log(document.querySelector("#checkbox").checked);
     }
 
     return (
@@ -23,6 +30,7 @@ function TodoItem({ todo }) {
         >
             <input
                 type="checkbox"
+                id='checkbox'
                 className="cursor-pointer"
                 checked={todo.completed}
                 onChange={toggleCompleted}
@@ -53,7 +61,10 @@ function TodoItem({ todo }) {
             {/* Delete Todo Button */}
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
-                onClick={() => deleteTodo(todo.id)}
+                onClick={() =>{ 
+                    deleteTodo(todo.id);
+                    toast.success("Task deleted");
+                }}
             >
                 ❌
             </button>
