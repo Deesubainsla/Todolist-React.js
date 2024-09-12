@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Todoinfo } from '../Context';
 import toast from 'react-hot-toast';
 
@@ -6,6 +6,7 @@ function TodoItem({ todo }) {
     const {updateTodo,deleteTodo,toggleComplete } = Todoinfo();
     const [Todomsg, setTodomsg] = useState(todo.todo);
     const [IstodoEditable, setIstodoEditable] = useState(false);
+    // const [check, setcheck] = useState(false);
     
     const editTodo = ()=>{
         updateTodo(todo.id, {...todo,todo:Todomsg});
@@ -13,14 +14,18 @@ function TodoItem({ todo }) {
         toast.success("updated successfully");
         // console.log("here");
     }
+
     const toggleCompleted = (e)=>{
         toggleComplete(todo.id);
-        if(document.querySelector("#checkbox").checked){
+        
+        if(e.target.checked){
             toast.success("Task completed");
         }
         
         // console.log(document.querySelector("#checkbox").checked);
     }
+
+    
 
     return (
         <div
@@ -30,7 +35,7 @@ function TodoItem({ todo }) {
         >
             <input
                 type="checkbox"
-                id='checkbox'
+                class='checkbox'
                 className="cursor-pointer"
                 checked={todo.completed}
                 onChange={toggleCompleted}
